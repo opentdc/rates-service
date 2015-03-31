@@ -23,38 +23,23 @@
  */
 package org.opentdc.rates;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-public enum Currency {
-	CHF("Swiss Franc"), USD("US Dollar"), EUR("Euro");
+import org.opentdc.service.exception.DuplicateException;
+import org.opentdc.service.exception.NotFoundException;
 
-	private String label;
-	private static Map<String, Currency> stringToEnumMapping;
+public interface ServiceProvider {
+	
+	public List<RatesModel> list();
 
-	private Currency(String label) {
-		this.label = label;
-	}
+	public RatesModel create(RatesModel rate) throws DuplicateException;
 
-	public static Currency getCurrency(String label) {
-		if (stringToEnumMapping == null) {
-			initMapping();
-		}
-		return stringToEnumMapping.get(label);
-	}
+	public RatesModel read(String id) throws NotFoundException;
 
-	private static void initMapping() {
-		stringToEnumMapping = new HashMap<String, Currency>();
-		for (Currency _c : values()) {
-			stringToEnumMapping.put(_c.label, _c);
-		}
-	}
+	public RatesModel update(RatesModel rate) throws NotFoundException;
 
-	public String getLabel() {
-		return label;
-	}
+	public void delete(String id) throws NotFoundException;
 
-	public static Currency getDefaultCurrency() {
-		return CHF;
-	}
+	public int count();
+
 }
