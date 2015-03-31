@@ -67,7 +67,7 @@ public class RatesService extends GenericService<ServiceProvider> {
 	) throws ReflectiveOperationException{
 		logger.info("> RatesService()");
 		if (sp == null) {
-			sp = this.getServiceProvider(context);
+			sp = this.getServiceProvider(RatesService.class, context);
 		}
 		logger.info("RatesService() initialized");
 	}
