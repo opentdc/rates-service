@@ -29,12 +29,14 @@ import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
@@ -75,8 +77,13 @@ public class RatesService extends GenericService<ServiceProvider> {
 	/******************************** company *****************************************/
 	@GET
 	@Path("/")
-	public List<RatesModel> list() {
-		return sp.list();
+	public List<RatesModel> list(
+		@DefaultValue(DEFAULT_QUERY_TYPE) @QueryParam("queryType") String queryType,
+		@DefaultValue(DEFAULT_QUERY) @QueryParam("query") String query,
+		@DefaultValue(DEFAULT_POSITION) @QueryParam("position") long position,
+		@DefaultValue(DEFAULT_SIZE) @QueryParam("size") long size
+	) {
+		return sp.list(queryType, query, position, size);
 	}
 
 	@POST
@@ -87,14 +94,19 @@ public class RatesService extends GenericService<ServiceProvider> {
 
 	@GET
 	@Path("/{id}")
-	public RatesModel read(@PathParam("id") String id) throws NotFoundException {
+	public RatesModel read(
+		@PathParam("id") String id
+	) throws NotFoundException {
 		return sp.read(id);
 	}
 
 	@PUT
-	@Path("/")
-	public RatesModel update(RatesModel rate) throws NotFoundException {
-		return sp.update(rate);
+	@Path("/{id}")
+	public RatesModel update(
+		@PathParam("id") String id,
+		RatesModel rate
+	) throws NotFoundException {
+		return sp.update(id, rate);
 	}
 
 	@DELETE

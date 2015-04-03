@@ -30,13 +30,18 @@ import org.opentdc.service.exception.NotFoundException;
 
 public interface ServiceProvider {
 	
-	public List<RatesModel> list();
+	public List<RatesModel> list(
+		String queryType,
+		String query,
+		long position,
+		long size
+	);
 
 	public RatesModel create(RatesModel rate) throws DuplicateException;
 
 	public RatesModel read(String id) throws NotFoundException;
 
-	public RatesModel update(RatesModel rate) throws NotFoundException;
+	public RatesModel update(String id, RatesModel rate) throws NotFoundException;
 
 	public void delete(String id) throws NotFoundException;
 

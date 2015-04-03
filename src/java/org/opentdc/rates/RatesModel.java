@@ -23,8 +23,6 @@
  */
 package org.opentdc.rates;
 
-import java.util.Formatter;
-import java.util.Locale;
 import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -115,23 +113,6 @@ public class RatesModel {
 	 */
 	public void setCurrency(Currency currency) {
 		this.currency = currency;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		StringBuilder _sb = new StringBuilder();
-		Formatter _formatter = new Formatter(_sb, Locale.US);
-		_formatter
-				.format("{\n\tid:\t%s\n\ttitle:\t%s\n\trate:\t%s\n\tcurrency:\t%s\n\tdescription:\t%s\n}",
-						getId(), getTitle(), getRate(), getCurrency(),
-						getDescription());
-		_formatter.close();
-		return _sb.toString();
 	}
 
 	/**
