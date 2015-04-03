@@ -44,14 +44,6 @@ import org.opentdc.service.GenericService;
 import org.opentdc.service.exception.DuplicateException;
 import org.opentdc.service.exception.NotFoundException;
 
-/**
- * CXFNonSpringJaxrsServlet (defined in web.xml) uses Singleton as a default
- * scope for service classes specified by a jaxrs.serviceClasses servlet
- * parameter.
- * 
- * @author Bruno Kaiser
- *
- */
 @Path("/api/rate")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
