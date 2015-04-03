@@ -57,7 +57,7 @@ public class RatesService extends GenericService<ServiceProvider> {
 	
 	private static ServiceProvider sp = null;
 
-	private Logger logger = Logger.getLogger(this.getClass().getName());
+	private static final Logger logger = Logger.getLogger(RatesService.class.getName());
 
 	/**
 	 * Invoked for each service invocation (Constructor)
