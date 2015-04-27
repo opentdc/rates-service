@@ -23,8 +23,6 @@
  */
 package org.opentdc.rates;
 
-import java.util.UUID;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -40,15 +38,9 @@ public class RatesModel {
 	private String description;
 
 	public RatesModel() {
-		this.id = UUID.randomUUID().toString();
-		this.title = "UNDEFINED_TITLE";
-		this.rate = 100;
-		this.currency = Currency.getDefaultCurrency();
-		this.description = "UNDEFINED_DESCRIPTION";
 	}
 
 	public RatesModel(String title, int rate, String description) {
-		this.id = UUID.randomUUID().toString();
 		this.title = title;
 		this.rate = rate;
 		this.currency = Currency.getDefaultCurrency();
@@ -66,8 +58,8 @@ public class RatesModel {
 	/**
 	 * Set the ID to a unique random number
 	 */
-	public void setId() {
-		this.id = UUID.randomUUID().toString();
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	/**
