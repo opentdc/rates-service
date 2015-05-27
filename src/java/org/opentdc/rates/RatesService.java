@@ -43,6 +43,7 @@ import javax.ws.rs.core.MediaType;
 import org.opentdc.service.GenericService;
 import org.opentdc.service.exception.DuplicateException;
 import org.opentdc.service.exception.NotFoundException;
+import org.opentdc.service.exception.ValidationException;
 
 @Path("/api/rate")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -80,7 +81,9 @@ public class RatesService extends GenericService<ServiceProvider> {
 
 	@POST
 	@Path("/")
-	public RatesModel create(RatesModel rate) throws DuplicateException {
+	public RatesModel create(
+			RatesModel rate) 
+		throws DuplicateException, ValidationException {
 		return sp.create(rate);
 	}
 
@@ -106,11 +109,4 @@ public class RatesService extends GenericService<ServiceProvider> {
 	public void delete(@PathParam("id") String id) throws NotFoundException {
 		sp.delete(id);
 	}
-
-	@GET
-	@Path("/count")
-	public int count() {
-		return sp.count();
-	}
-
 }

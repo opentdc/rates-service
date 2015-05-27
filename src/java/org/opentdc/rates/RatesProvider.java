@@ -23,7 +23,6 @@
  */
 package org.opentdc.rates;
 
-import java.util.Arrays;
 
 /**
  * Configure default JSON provider.
@@ -35,7 +34,7 @@ public class RatesProvider<T> extends org.apache.cxf.jaxrs.provider.json.JSONPro
 	public RatesProvider(
 	) {
 		super();
-		this.setSerializeAsArray(true);
-		this.setArrayKeys(Arrays.asList("@TODO"));
+		// this.setSerializeAsArray(true);
+		// this.setArrayKeys(Arrays.asList("@TODO"));
 	}	
 }

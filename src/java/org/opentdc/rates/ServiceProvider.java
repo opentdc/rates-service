@@ -27,6 +27,7 @@ import java.util.List;
 
 import org.opentdc.service.exception.DuplicateException;
 import org.opentdc.service.exception.NotFoundException;
+import org.opentdc.service.exception.ValidationException;
 
 public interface ServiceProvider {
 	
@@ -37,14 +38,20 @@ public interface ServiceProvider {
 		long size
 	);
 
-	public RatesModel create(RatesModel rate) throws DuplicateException;
+	public RatesModel create(
+			RatesModel rate) 
+		throws DuplicateException, ValidationException;
 
-	public RatesModel read(String id) throws NotFoundException;
+	public RatesModel read(
+			String id) 
+		throws NotFoundException;
 
-	public RatesModel update(String id, RatesModel rate) throws NotFoundException;
+	public RatesModel update(
+			String id, 
+			RatesModel rate) 
+		throws NotFoundException;
 
-	public void delete(String id) throws NotFoundException;
-
-	public int count();
-
+	public void delete(
+			String id) 
+		throws NotFoundException;
 }
