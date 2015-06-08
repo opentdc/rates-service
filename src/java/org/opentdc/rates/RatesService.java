@@ -43,7 +43,6 @@ import javax.ws.rs.core.MediaType;
 import org.opentdc.service.GenericService;
 import org.opentdc.service.exception.DuplicateException;
 import org.opentdc.service.exception.InternalServerErrorException;
-import org.opentdc.service.exception.NotAllowedException;
 import org.opentdc.service.exception.NotFoundException;
 import org.opentdc.service.exception.ValidationException;
 
@@ -102,7 +101,7 @@ public class RatesService extends GenericService<ServiceProvider> {
 	public RatesModel update(
 		@PathParam("id") String id,
 		RatesModel rate
-	) throws NotFoundException, NotAllowedException {
+	) throws NotFoundException, ValidationException {
 		return sp.update(id, rate);
 	}
 

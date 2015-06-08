@@ -27,7 +27,6 @@ import java.util.List;
 
 import org.opentdc.service.exception.DuplicateException;
 import org.opentdc.service.exception.InternalServerErrorException;
-import org.opentdc.service.exception.NotAllowedException;
 import org.opentdc.service.exception.NotFoundException;
 import org.opentdc.service.exception.ValidationException;
 
@@ -51,7 +50,7 @@ public interface ServiceProvider {
 	public RatesModel update(
 			String id, 
 			RatesModel rate) 
-		throws NotFoundException, NotAllowedException;
+		throws NotFoundException, ValidationException;
 
 	public void delete(
 			String id) 
