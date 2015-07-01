@@ -26,16 +26,29 @@ package org.opentdc.rates;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author bruno
+ *
+ */
 public enum Currency {
 	CHF("Swiss Franc"), USD("US Dollar"), EUR("Euro");
 
 	private String label;
 	private static Map<String, Currency> stringToEnumMapping;
 
+	/**
+	 * Constructor.
+	 * @param label the label of the currency.
+	 */
 	private Currency(String label) {
 		this.label = label;
 	}
 
+	/**
+	 * Returns the currency based on its label.
+	 * @param label the label of the currency.
+	 * @return the currency
+	 */
 	public static Currency getCurrency(String label) {
 		if (stringToEnumMapping == null) {
 			initMapping();
@@ -43,6 +56,9 @@ public enum Currency {
 		return stringToEnumMapping.get(label);
 	}
 
+	/**
+	 * Initializes the mappings between label and currency.
+	 */
 	private static void initMapping() {
 		stringToEnumMapping = new HashMap<String, Currency>();
 		for (Currency _c : values()) {
@@ -50,10 +66,18 @@ public enum Currency {
 		}
 	}
 
+	/**
+	 * Get the label. The label is the usual name of the currency in english.
+	 * @return the label
+	 */
 	public String getLabel() {
 		return label;
 	}
 
+	/**
+	 * Get the default currency (CHF). This is the official international currency code.
+	 * @return the default currency
+	 */
 	public static Currency getDefaultCurrency() {
 		return CHF;
 	}

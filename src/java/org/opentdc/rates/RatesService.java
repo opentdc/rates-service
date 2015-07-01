@@ -26,6 +26,8 @@ package org.opentdc.rates;
 import java.util.List;
 import java.util.logging.Logger;
 
+import io.swagger.annotations.*;
+
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -47,6 +49,7 @@ import org.opentdc.service.exception.NotFoundException;
 import org.opentdc.service.exception.ValidationException;
 
 @Path("/api/rate")
+@Api(value = "/api/rate", description = "Operations about rates")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class RatesService extends GenericService<ServiceProvider> {
@@ -71,6 +74,7 @@ public class RatesService extends GenericService<ServiceProvider> {
 	/******************************** company *****************************************/
 	@GET
 	@Path("/")
+	@ApiOperation(value = "Return a list of all rates")
 	public List<RatesModel> list(
 		@DefaultValue(DEFAULT_QUERY_TYPE) @QueryParam("queryType") String queryType,
 		@DefaultValue(DEFAULT_QUERY) @QueryParam("query") String query,
@@ -82,6 +86,10 @@ public class RatesService extends GenericService<ServiceProvider> {
 
 	@POST
 	@Path("/")
+	@ApiOperation(value = "Create a new rate")
+	@ApiResponses(value = { 
+			@ApiResponse(code = 400, message = "Invalid ID supplied or mandatory field missing (BAD_REQUEST)"),
+			@ApiResponse(code = 409, message = "An object with the same id exists already (CONFLICT)") })
 	public RatesModel create(
 			RatesModel rate) 
 		throws DuplicateException, ValidationException {
@@ -90,6 +98,8 @@ public class RatesService extends GenericService<ServiceProvider> {
 
 	@GET
 	@Path("/{id}")
+	@ApiOperation(value = "Find a rate by id", response = RatesModel.class)
+
 	public RatesModel read(
 		@PathParam("id") String id
 	) throws NotFoundException {

@@ -30,6 +30,10 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * @author bruno
+ *
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
 public class RatesModel {
@@ -44,9 +48,18 @@ public class RatesModel {
 	private Date modifiedAt;
 	private String modifiedBy;
 
+	/**
+	 * Empty constructor.
+	 */
 	public RatesModel() {
 	}
 
+	/**
+	 * Constructor.
+	 * @param title	the title (mandatory)
+	 * @param rate	the rate (mandatory)
+	 * @param description	a description
+	 */
 	public RatesModel(String title, int rate, String description) {
 		this.title = title;
 		this.rate = rate;
@@ -55,21 +68,23 @@ public class RatesModel {
 	}
 
 	/**
-	 * 
-	 * @return the ID
+	 * Get the id.
+	 * @return the id.
 	 */
 	public String getId() {
 		return id;
 	}
 
 	/**
-	 * Set the ID to a unique random number
+	 * Set the id.
+	 * @param id	the id to set, normally this is done on the server only (unique id).
 	 */
 	public void setId(String id) {
 		this.id = id;
 	}
 
 	/**
+	 * Get the title.
 	 * @return the title
 	 */
 	public String getTitle() {
@@ -77,14 +92,15 @@ public class RatesModel {
 	}
 
 	/**
-	 * @param title
-	 *            the title to set
+	 * Set the title.
+	 * @param title   the title to set
 	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
 	/**
+	 * Get the rate.
 	 * @return the rate
 	 */
 	public int getRate() {
@@ -92,14 +108,15 @@ public class RatesModel {
 	}
 
 	/**
-	 * @param rate
-	 *            the rate to set
+	 * Set the rate.
+	 * @param rate  the rate to set
 	 */
 	public void setRate(int rate) {
 		this.rate = rate;
 	}
 
 	/**
+	 * Get the currency.
 	 * @return the currency
 	 */
 	public Currency getCurrency() {
@@ -107,14 +124,15 @@ public class RatesModel {
 	}
 
 	/**
-	 * @param currency
-	 *            the currency to set
+	 * Set the Currency.
+	 * @param currency  the currency to set
 	 */
 	public void setCurrency(Currency currency) {
 		this.currency = currency;
 	}
 
 	/**
+	 * Get the description.
 	 * @return the description
 	 */
 	public String getDescription() {
@@ -122,48 +140,88 @@ public class RatesModel {
 	}
 
 	/**
-	 * @param description
-	 *            the description to set
+	 * Set the description.
+	 * @param description   the description to set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	/**
+	 * Get the creation date.
+	 * @return the creation date
+	 */
 	public Date getCreatedAt() {
 		return createdAt;
 	}
 
+	/**
+	 * Set the creation date. This attibute should only be set once at creation time and exclusively by the server.
+	 * @param createdAt the date when this object was created.
+	 */
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
 
+	/** 
+	 * Get the creation date.
+	 * @return the creation date
+	 */
 	public String getCreatedBy() {
 		return createdBy;
 	}
 
+	/**
+	 * Set the createdBy attribute, i.e. the user that created the attribute.
+	 * This attribute should only be set once at creation time and exclusively by the server.
+	 * @param createdBy  the loginId of the user having created the object
+	 */
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
 
+	/**
+	 * Get the date of the last modification. 
+	 * @return the date of the last modification
+	 */
 	public Date getModifiedAt() {
 		return modifiedAt;
 	}
 
+	/**
+	 * Set the modification date. This should only be change by the server when updating an object.
+	 * @param modifiedAt  the date of the last modification
+	 */
 	public void setModifiedAt(Date modifiedAt) {
 		this.modifiedAt = modifiedAt;
 	}
 
+	/**
+	 * Get the modifiedBy attribute, i.e. the loginId of the user who made the last update.
+	 * @return modifiedBy the loginId of the user who made the last update
+	 */
 	public String getModifiedBy() {
 		return modifiedBy;
 	}
 
+	/**
+	 * Set the modifiedBy attribute, i.e. the loginId of the user who made the last update.
+	 * @param modifiedBy the loginId of the user who made the last update
+	 */
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
 	
 	/******************************* Comparator *****************************/
+	/**
+	 * Comparator for comparing two rates based on their id.
+	 */
 	public static Comparator<RatesModel> RateComparator = new Comparator<RatesModel>() {
 
+		/* (non-Javadoc)
+		 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+		 * @return -1 if the first object is null of smaller; otherwise it returns +1
+		 */
 		public int compare(RatesModel obj1, RatesModel obj2) {
 			if (obj1.getId() == null) {
 				return -1;
