@@ -10,6 +10,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="/Users/bruno/proj/opentdc/opt/swagger/jre-1.7/swagger-core-1.5.0/modules/swagger-annotations/target/swagger-annotations-1.5.0.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/opentdc Thirdparty ~ Swagger (jre-1.7)"/>
 	<classpathentry kind="output" path="build/jre-1.7/eclipse"/>
 </classpath>
