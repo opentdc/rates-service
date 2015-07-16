@@ -43,6 +43,7 @@ public class RatesModel {
 	private int rate;
 	private Currency currency;	// default: Default Currency
 	private String description;
+	private RateType type;
 	private Date createdAt;
 	private String createdBy;
 	private Date modifiedAt;
@@ -212,6 +213,20 @@ public class RatesModel {
 		this.modifiedBy = modifiedBy;
 	}
 	
+	/**
+	 * @return the type
+	 */
+	public RateType getType() {
+		return type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(RateType type) {
+		this.type = type;
+	}
+
 	/******************************* Comparator *****************************/
 	/**
 	 * Comparator for comparing two rates based on their id.
