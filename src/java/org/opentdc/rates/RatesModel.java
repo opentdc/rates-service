@@ -40,10 +40,10 @@ public class RatesModel {
 
 	private String id;			// sortable
 	private String title;		// mandatory
-	private int rate;
-	private Currency currency;	// default: Default Currency
+	private int rate;			// mandatory
+	private Currency currency;	// default
 	private String description;
-	private RateType type;
+	private RateType type;		// default
 	private Date createdAt;
 	private String createdBy;
 	private Date modifiedAt;
@@ -65,6 +65,7 @@ public class RatesModel {
 		this.title = title;
 		this.rate = rate;
 		this.currency = Currency.getDefaultCurrency();
+		this.type = RateType.getDefaultRateType();
 		this.description = description;
 	}
 
