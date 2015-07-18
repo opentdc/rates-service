@@ -23,51 +23,30 @@
  */
 package org.opentdc.rates;
 
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author bruno
  *
  */
 public enum Currency {
-	CHF("Swiss Franc"), USD("US Dollar"), EUR("Euro");
+	CHF("Swiss Franc", 756), USD("US Dollar", 840), EUR("Euro", 978);
 
 	private String label;
-	private static Map<String, Currency> stringToEnumMapping;
-
+	private int isoCode;
+	
 	/**
 	 * Constructor.
+	 * 
 	 * @param label the label of the currency.
 	 */
-	private Currency(String label) {
+	private Currency(String label, int isoCode) {
 		this.label = label;
-	}
-
-	/**
-	 * Returns the currency based on its label.
-	 * @param label the label of the currency.
-	 * @return the currency
-	 */
-	public static Currency getCurrency(String label) {
-		if (stringToEnumMapping == null) {
-			initMapping();
-		}
-		return stringToEnumMapping.get(label);
-	}
-
-	/**
-	 * Initializes the mappings between label and currency.
-	 */
-	private static void initMapping() {
-		stringToEnumMapping = new HashMap<String, Currency>();
-		for (Currency _c : values()) {
-			stringToEnumMapping.put(_c.label, _c);
-		}
+		this.isoCode = isoCode;
 	}
 
 	/**
 	 * Get the label. The label is the usual name of the currency in english.
+	 * 
 	 * @return the label
 	 */
 	public String getLabel() {
@@ -75,10 +54,41 @@ public enum Currency {
 	}
 
 	/**
+	 * Get currency iso code.
+	 * 
+	 * @return
+	 */
+	public int getIsoCode() {
+		return isoCode;
+	}
+	
+	/**
+	 * Map ISO currency code to Currency.
+	 * 
+	 * @param isoCode
+	 * @return
+	 */
+	public static Currency toCurrency(
+		int isoCode
+	) {
+		if(isoCode == 756) {
+			return CHF;
+		} else if(isoCode == 840) {
+			return USD;
+		} else if(isoCode == 978) {
+			return EUR;
+		} else {
+			throw new IllegalArgumentException();
+		}
+	}
+
+	/**
 	 * Get the default currency (CHF). This is the official international currency code.
+	 * 
 	 * @return the default currency
 	 */
 	public static Currency getDefaultCurrency() {
 		return CHF;
 	}
+	
 }

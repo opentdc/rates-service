@@ -35,8 +35,8 @@ public interface ServiceProvider {
 	public List<RatesModel> list(
 		String queryType,
 		String query,
-		long position,
-		long size
+		int position,
+		int size
 	);
 
 	public RatesModel create(
