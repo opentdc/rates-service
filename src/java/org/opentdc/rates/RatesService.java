@@ -76,7 +76,7 @@ public class RatesService extends GenericService<ServiceProvider> {
 	@GET
 	@Path("/")
 //	@ApiOperation(value = "Return a list of all rates")
-	public List<RatesModel> list(
+	public List<RateModel> list(
 		@DefaultValue(DEFAULT_QUERY_TYPE) @QueryParam("queryType") String queryType,
 		@DefaultValue(DEFAULT_QUERY) @QueryParam("query") String query,
 		@DefaultValue(DEFAULT_POSITION) @QueryParam("position") int position,
@@ -91,8 +91,8 @@ public class RatesService extends GenericService<ServiceProvider> {
 //	@ApiResponses(value = { 
 //			@ApiResponse(code = 400, message = "Invalid ID supplied or mandatory field missing (BAD_REQUEST)"),
 //			@ApiResponse(code = 409, message = "An object with the same id exists already (CONFLICT)") })
-	public RatesModel create(
-			RatesModel rate) 
+	public RateModel create(
+			RateModel rate) 
 		throws DuplicateException, ValidationException {
 		return sp.create(rate);
 	}
@@ -101,7 +101,7 @@ public class RatesService extends GenericService<ServiceProvider> {
 	@Path("/{id}")
 //	@ApiOperation(value = "Find a rate by id", response = RatesModel.class)
 
-	public RatesModel read(
+	public RateModel read(
 		@PathParam("id") String id
 	) throws NotFoundException {
 		return sp.read(id);
@@ -109,9 +109,9 @@ public class RatesService extends GenericService<ServiceProvider> {
 
 	@PUT
 	@Path("/{id}")
-	public RatesModel update(
+	public RateModel update(
 		@PathParam("id") String id,
-		RatesModel rate
+		RateModel rate
 	) throws NotFoundException, ValidationException {
 		return sp.update(id, rate);
 	}

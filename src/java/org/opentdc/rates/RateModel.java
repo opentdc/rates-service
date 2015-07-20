@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
-public class RatesModel {
+public class RateModel {
 
 	private String id;			// sortable
 	private String title;		// mandatory
@@ -52,7 +52,7 @@ public class RatesModel {
 	/**
 	 * Empty constructor.
 	 */
-	public RatesModel() {
+	public RateModel() {
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class RatesModel {
 	 * @param rate	the rate (mandatory)
 	 * @param description	a description
 	 */
-	public RatesModel(String title, int rate, String description) {
+	public RateModel(String title, int rate, String description) {
 		this.title = title;
 		this.rate = rate;
 		this.currency = Currency.getDefaultCurrency();
@@ -232,13 +232,13 @@ public class RatesModel {
 	/**
 	 * Comparator for comparing two rates based on their id.
 	 */
-	public static Comparator<RatesModel> RateComparator = new Comparator<RatesModel>() {
+	public static Comparator<RateModel> RateComparator = new Comparator<RateModel>() {
 
 		/* (non-Javadoc)
 		 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
 		 * @return -1 if the first object is null of smaller; otherwise it returns +1
 		 */
-		public int compare(RatesModel obj1, RatesModel obj2) {
+		public int compare(RateModel obj1, RateModel obj2) {
 			if (obj1.getId() == null) {
 				return -1;
 			}

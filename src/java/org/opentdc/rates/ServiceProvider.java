@@ -32,24 +32,24 @@ import org.opentdc.service.exception.ValidationException;
 
 public interface ServiceProvider {
 	
-	public List<RatesModel> list(
+	public List<RateModel> list(
 		String queryType,
 		String query,
 		int position,
 		int size
 	);
 
-	public RatesModel create(
-			RatesModel rate) 
+	public RateModel create(
+			RateModel rate) 
 		throws DuplicateException, ValidationException;
 
-	public RatesModel read(
+	public RateModel read(
 			String id) 
 		throws NotFoundException;
 
-	public RatesModel update(
+	public RateModel update(
 			String id, 
-			RatesModel rate) 
+			RateModel rate) 
 		throws NotFoundException, ValidationException;
 
 	public void delete(
