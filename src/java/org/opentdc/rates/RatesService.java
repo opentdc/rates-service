@@ -72,7 +72,7 @@ public class RatesService extends GenericService<ServiceProvider> {
 		logger.info("RatesService() initialized");
 	}
 
-	/******************************** company *****************************************/
+	/******************************** rate *****************************************/
 	@GET
 	@Path("/")
 //	@ApiOperation(value = "Return a list of all rates")
