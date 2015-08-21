@@ -33,8 +33,8 @@ import org.opentdc.service.exception.ValidationException;
 public interface ServiceProvider {
 	
 	public List<RateModel> list(
-		String queryType,
 		String query,
+		String queryType,
 		int position,
 		int size
 	);
