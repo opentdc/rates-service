@@ -25,6 +25,8 @@ package org.opentdc.rates;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.opentdc.service.exception.DuplicateException;
 import org.opentdc.service.exception.InternalServerErrorException;
 import org.opentdc.service.exception.NotFoundException;
@@ -40,6 +42,7 @@ public interface ServiceProvider {
 	);
 
 	public RateModel create(
+			HttpServletRequest request,
 			RateModel rate) 
 		throws DuplicateException, ValidationException;
 
@@ -48,6 +51,7 @@ public interface ServiceProvider {
 		throws NotFoundException;
 
 	public RateModel update(
+			HttpServletRequest request,
 			String id, 
 			RateModel rate) 
 		throws NotFoundException, ValidationException;

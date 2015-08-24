@@ -28,7 +28,9 @@ import java.util.logging.Logger;
 
 // import io.swagger.annotations.*;
 
+
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
@@ -92,9 +94,10 @@ public class RatesService extends GenericService<ServiceProvider> {
 //			@ApiResponse(code = 400, message = "Invalid ID supplied or mandatory field missing (BAD_REQUEST)"),
 //			@ApiResponse(code = 409, message = "An object with the same id exists already (CONFLICT)") })
 	public RateModel create(
+			@Context HttpServletRequest request,
 			RateModel rate) 
 		throws DuplicateException, ValidationException {
-		return sp.create(rate);
+		return sp.create(request, rate);
 	}
 
 	@GET
@@ -110,10 +113,11 @@ public class RatesService extends GenericService<ServiceProvider> {
 	@PUT
 	@Path("/{id}")
 	public RateModel update(
+		@Context HttpServletRequest request,
 		@PathParam("id") String id,
 		RateModel rate
 	) throws NotFoundException, ValidationException {
-		return sp.update(id, rate);
+		return sp.update(request, id, rate);
 	}
 
 	@DELETE
